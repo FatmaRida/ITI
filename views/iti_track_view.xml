@@ -1,0 +1,61 @@
+<odoo>
+    <data>
+        <record id="iti_track_tree_view" model="ir.ui.view">
+            <field name="name">ITI track Tree View</field>
+            <field name="model">iti.track</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" string="Track Name" />
+
+                </tree>
+            </field>
+
+        </record>
+        <record id="iti_track_form_view" model="ir.ui.view">
+            <field name="name">ITI track Form View</field>
+            <field name="model">iti.track</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group string="Basic info">
+                      <field name="name" string="Track Name" />
+                       <field name="desc"/>
+                             <field name="student_ids" >
+                                 <tree editable="bottom">
+                                     <field name="name" />
+                                     <field name="age" />
+                                     <field name="email" />
+                                 </tree>
+                                 <form>
+                                     <group>
+                                   <field name="name" string="name"/>
+                                     <field name="age" string="age"/>
+                                     <field name="email" string="email"/>
+                                     </group>
+                                 </form>
+                             </field>
+
+
+
+                    </group>
+
+                </form>
+            </field>
+
+        </record>
+
+
+        <record model="ir.actions.act_window" id="iti_track_action">
+            <field name="name">ITI tracks</field>
+            <field name="res_model">iti.track</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+<!--        <menuitem id="iti_menu" name="ITI"/>-->
+
+<!--        <menuitem id="iti_data_menu" parent="iti_menu" name="data"/>-->
+
+        <menuitem id="iti_track_menu" parent="iti_data_menu" name="tracks" action="iti_track_action"/>
+
+
+    </data>
+</odoo>

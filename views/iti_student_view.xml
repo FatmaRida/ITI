@@ -1,0 +1,84 @@
+<odoo>
+    <data>
+        <record id="iti_student_tree_view" model="ir.ui.view">
+            <field name="name">ITI Student Tree View</field>
+            <field name="model">iti.student</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="age"/>
+                    <field name="email"/>
+                    <field name="track_id" string="My Track"/>
+                    <field name="skills_ids"/>
+                    <field name="gender"/>
+
+
+                </tree>
+            </field>
+
+        </record>
+        <record id="iti_student_form_view" model="ir.ui.view">
+            <field name="name">ITI Student Form View</field>
+            <field name="model">iti.student</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group string="Basic info">
+                        <group>
+                            <field name="name"/>
+                            <field name="age"/>
+                            <field name="track_id" string="My Track" />
+                            <field name="track_desc"/>
+                        </group>
+                        <group>
+                            <field name="email"/>
+                            <field name="gender"/>
+                            <field name="salary"/>
+                            <field name="skills_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Image">
+                            <field name="image"/>
+                        </page>
+                        <page string="cv">
+                            <field name="desc"/>
+                        </page>
+                        <page string="Grades">
+                            <field name="course_line_ids">
+                                <tree >
+                                    <field name="course_id"/>
+                                   <field name="grade"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                     <field name="course_id"/>
+                                    <field name="grade"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="BIO">
+                            <field name="bio"/>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+
+        </record>
+
+
+        <record model="ir.actions.act_window" id="iti_student_action">
+            <field name="name">ITI Students</field>
+            <field name="res_model">iti.student</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="iti_menu" name="ITI"/>
+
+        <menuitem id="iti_data_menu" parent="iti_menu" name="data"/>
+
+        <menuitem id="iti_student_menu" parent="iti_data_menu" name="students" action="iti_student_action"/>
+
+
+    </data>
+</odoo>
